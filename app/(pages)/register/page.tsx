@@ -65,7 +65,7 @@ export default function Register() {
                 type="text"
                 placeholder="Crie seu username único"
                 className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
-                onChange={(e) => setusername(e.target.value)}
+                onChange={(e) => setusername(e.target.value.toLowerCase())}
                 value={username}
               />
             </div>
