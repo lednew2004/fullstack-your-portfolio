@@ -25,152 +25,124 @@ export default function Register() {
   }
 
   return (
-    <div className="max-w-full h-225 relative overflow-hidden">
-      <div className="left-28 top-52 absolute inline-flex flex-col justify-start items-start gap-10">
-        <div className="flex flex-col justify-start items-start gap-10">
-          <div className="flex flex-col justify-start items-start gap-4">
-            <div className="justify-start text-slate-100 text-4xl font-bold ">
+    <div className="min-h-screen flex items-center justify-center px-6 py-10">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-16">
+        {/* LEFT - FORM */}
+        <div className="w-full lg:w-1/2 flex flex-col gap-10">
+          {/* HEADER */}
+          <div className="flex flex-col gap-4">
+            <h1 className="text-slate-100 text-3xl md:text-4xl font-bold">
               Acesse a plataforma
-            </div>
-            <div className="w-80 justify-start text-slate-200 text-base ">
+            </h1>
+            <p className="text-slate-300 text-base max-w-md">
               Faça login ou registre-se para começar a construir seus projetos
               ainda hoje.
-            </div>
+            </p>
           </div>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-8">
-          <div className="flex flex-col justify-start items-start gap-4">
-            <div className="flex flex-col justify-start items-start gap-2">
-              <div className="justify-start text-slate-100 text-sm font-semibold">
+
+          {/* FORM */}
+          <div className="flex flex-col gap-6">
+            {/* NAME */}
+            <div className="flex flex-col gap-2">
+              <label className="text-slate-100 text-sm font-semibold">
                 Name
-              </div>
-              <div className="w-96 px-3 py-4 border-b  rounded outline-1 -outline-offset-1 outline-slate-200 inline-flex justify-start items-center gap-2.5">
-                <div className="justify-start text-slate-300 text-sm ">
-                  <input
-                    type="text"
-                    placeholder="Digite seu Nome"
-                    className="outline-0"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                  />
-                </div>
-              </div>
+              </label>
+              <input
+                type="text"
+                placeholder="Digite seu Nome"
+                className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
             </div>
 
-            <div className="flex flex-col justify-start items-start gap-2">
-              <div className="justify-start text-slate-100 text-sm font-semibold">
-                UserName
-              </div>
-              <div className="w-96 px-3 py-4 border-b  rounded outline-1 -outline-offset-1 outline-slate-200 inline-flex justify-start items-center gap-2.5">
-                <div className="justify-start text-slate-300 text-sm ">
-                  <input
-                    type="text"
-                    placeholder="Crie seu username único"
-                    className="outline-0"
-                    onChange={(e) => setusername(e.target.value)}
-                    value={username}
-                  />
-                </div>
-              </div>
+            {/* USERNAME */}
+            <div className="flex flex-col gap-2">
+              <label className="text-slate-100 text-sm font-semibold">
+                Username
+              </label>
+              <input
+                type="text"
+                placeholder="Crie seu username único"
+                className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
+                onChange={(e) => setusername(e.target.value)}
+                value={username}
+              />
             </div>
 
-            <div className="flex flex-col justify-start items-start gap-2">
-              <div className="justify-start text-slate-100 text-sm font-semibold">
+            {/* EMAIL */}
+            <div className="flex flex-col gap-2">
+              <label className="text-slate-100 text-sm font-semibold">
                 E-mail
-              </div>
-              <div className="w-96 px-3 py-4 border-b  rounded outline-1 -outline-offset-1 outline-slate-200 inline-flex justify-start items-center gap-2.5">
-                <div className="justify-start text-slate-300 text-sm ">
-                  <input
-                    type="text"
-                    placeholder="Digite seu e-mail"
-                    className="outline-0"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                  />
-                </div>
-              </div>
+              </label>
+              <input
+                type="email"
+                placeholder="Digite seu e-mail"
+                className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
             </div>
-            <div className="flex flex-col justify-start items-start gap-2">
-              <div className="self-stretch inline-flex justify-between items-start">
-                <div className="justify-start text-slate-100 text-sm font-semibold">
-                  Senha
-                </div>
-              </div>
-              <div className="w-96 px-3 py-4  rounded outline -outline-offset-1 outline-slate-200 inline-flex justify-start items-center gap-2.5">
-                <div className="flex-1 flex justify-between items-center">
-                  <div className="justify-start text-slate-300 text-sm ">
-                    <input
-                      type="password"
-                      placeholder="Crie uma senha"
-                      className="outline-0 w-90"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                    />
-                  </div>
-                </div>
-              </div>
+
+            {/* PASSWORD */}
+            <div className="flex flex-col gap-2">
+              <label className="text-slate-100 text-sm font-semibold">
+                Senha
+              </label>
+              <input
+                type="password"
+                placeholder="Crie uma senha"
+                className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
             </div>
-          </div>
-          <button
-            onClick={handleLoginUser}
-            className="w-96 px-6 py-4 bg-lime-500 hover:bg-lime-400 cursor-pointer rounded text-zinc-100 text-base font-bold"
-          >
-            Criar
-          </button>
-          <div className="justify-start">
-            <span className="text-slate-300 text-base ">
-              Já possui uma conta ?
-            </span>
-            <a href="/login">
-              <span className="text-lime-400 hover:text-lime-500 cursor-pointer text-base font-bold">
+
+            {/* BUTTON */}
+            <button
+              onClick={handleLoginUser}
+              className="w-full max-w-md px-6 py-4 bg-lime-500 hover:bg-lime-400 transition rounded text-zinc-100 font-bold"
+            >
+              Criar conta
+            </button>
+
+            {/* LOGIN LINK */}
+            <div>
+              <span className="text-slate-300">Já possui uma conta? </span>
+              <a
+                href="/login"
+                className="text-lime-400 hover:text-lime-500 font-bold"
+              >
                 Login
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="w-40 h-14 left-28 top-10 absolute overflow-hidden">
-        <div>login</div>
-      </div>
-
-      <div className="right-28 top-45 absolute w-130 flex flex-col gap-10">
-        <div className="flex flex-col gap-6">
-          <div className="text-slate-100 text-4xl font-bold leading-tight">
-            Crie um portfólio que realmente impressiona
-          </div>
-          <div className="text-slate-300 text-lg  leading-relaxed">
-            Mostre seus projetos, organize suas informações profissionais e
-            construa uma presença online que destaca você no mercado.
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-3 h-3 mt-2 bg-lime-400 rounded-full" />
-            <div className="text-slate-200 text-base ">
-              Adicione projetos com imagens, descrições e links detalhados
-            </div>
+        {/* RIGHT - CONTENT */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center gap-10">
+          <div className="flex flex-col gap-6">
+            <h2 className="text-slate-100 text-3xl md:text-4xl font-bold leading-tight">
+              Crie um portfólio que realmente impressiona
+            </h2>
+            <p className="text-slate-300 text-lg leading-relaxed">
+              Mostre seus projetos, organize suas informações profissionais e
+              construa uma presença online que destaca você no mercado.
+            </p>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="w-3 h-3 mt-2 bg-lime-400 rounded-full" />
-            <div className="text-slate-200 text-base ">
-              Centralize todas as suas redes sociais em um único perfil
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <div className="w-3 h-3 mt-2 bg-lime-400 rounded-full" />
-            <div className="text-slate-200 text-base ">
-              Personalize suas informações e destaque suas habilidades
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <div className="w-3 h-3 mt-2 bg-lime-400 rounded-full" />
-            <div className="text-slate-200 text-base ">
-              Compartilhe seu portfólio com um link único e profissional
-            </div>
+          <div className="flex flex-col gap-6">
+            {[
+              "Adicione projetos com imagens, descrições e links detalhados",
+              "Centralize todas as suas redes sociais em um único perfil",
+              "Personalize suas informações e destaque suas habilidades",
+              "Compartilhe seu portfólio com um link único e profissional",
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-4">
+                <div className="w-3 h-3 mt-2 bg-lime-400 rounded-full" />
+                <p className="text-slate-200">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
