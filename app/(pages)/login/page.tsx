@@ -16,13 +16,12 @@ export default function Login() {
   const router = useRouter();
 
   async function handleLoginUser() {
-    try {
-      await loginUser({ email, password });
-      router.push("/profile");
-    } catch (error: any) {
-      console.log("Erro login:", error.message);
-      setErrorMessage(error?.message || "Email ou senha inválidos");
+    const res = await loginUser({ email, password });
+    if (res?.error) {
+      setErrorMessage(res.error);
     }
+
+    router.push("/profile");
   }
 
   return (
