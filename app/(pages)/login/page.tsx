@@ -19,6 +19,7 @@ export default function Login() {
     const res = await loginUser({ email, password });
     if (res?.error) {
       setErrorMessage(res.error);
+      return;
     }
 
     router.push("/profile");
