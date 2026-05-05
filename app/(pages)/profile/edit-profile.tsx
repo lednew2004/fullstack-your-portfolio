@@ -73,12 +73,12 @@ export default function EditUserCard({
       </button>
 
       <Modal isOpen={isModalOpen} setIsOpen={() => setIsModalOpen(false)}>
-        <div className="bg-zinc-950 p-8 rounded-[20px] flex flex-col gap-10">
+        <div className="bg-zinc-950 w-full max-w-xl md:max-w-5xl lg:max-w-4xl p-4 md:p-8 rounded-2xl flex flex-col gap-6 md:gap-10 max-h-[90vh] overflow-y-auto">
           <p className="text-white font-bold text-xl">Editar perfil</p>
 
-          <div className="flex gap-10">
+          <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-4 justify-end">
             <div className="flex flex-col items-center gap-3 text-xs">
-              <div className="w-25 h-25 rounded-xl bg-zinc-800 overflow-hidden">
+              <div className="w-20 h-20 md:w-25 md:h-25 rounded-xl bg-zinc-800 overflow-hidden">
                 {profilePic ? (
                   <img
                     src={profilePic}
@@ -116,7 +116,7 @@ export default function EditUserCard({
               />
             </div>
 
-            <div className="flex flex-col gap-4 w-73.25">
+            <div className="flex flex-col gap-4 w-full">
               <div className="flex flex-col gap-1">
                 <label className="text-white font-bold">Seu nome</label>
                 <TextInput

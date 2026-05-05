@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { BiCube } from "react-icons/bi";
-import { BsArrowBarRight } from "react-icons/bs";
+import { BsArrowBarLeft } from "react-icons/bs";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ export default function Login() {
           onClick={() => router.back()}
           className="w-10 h-10 cursor-pointer flex items-center justify-center text-white hover:text-lime-400 transition"
         >
-          <BsArrowBarRight size={22} />
+          <BsArrowBarLeft size={22} />
         </button>
         <div className="flex gap-1 items-center">
           <BiCube size={35} className="text-lime-300" />
