@@ -1,13 +1,20 @@
 "use client";
 
 import { registerUser } from "@/app/actions/register";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { BsArrowBarLeft } from "react-icons/bs";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [username, setusername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const router = useRouter();
 
   async function handleLoginUser() {
     try {
@@ -21,6 +28,7 @@ export default function Register() {
       window.location.href = "/login";
     } catch (error: any) {
       console.log("Erro:", error.message);
+      setErrorMessage(error?.message || "Internal server error");
     }
   }
 
@@ -31,15 +39,24 @@ export default function Register() {
         <div className="w-full lg:w-1/2 flex flex-col gap-10">
           {/* HEADER */}
           <div className="flex flex-col gap-4">
-            <h1 className="text-slate-100 text-3xl md:text-4xl font-bold">
-              Acesse a plataforma
-            </h1>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => router.back()}
+                className="w-10 h-10 cursor-pointer flex items-center justify-center text-white hover:text-lime-400 transition"
+              >
+                <BsArrowBarLeft size={22} />
+              </button>
+
+              <h1 className="text-slate-100 text-3xl md:text-4xl font-bold">
+                Acesse a plataforma
+              </h1>
+            </div>
+
             <p className="text-slate-300 text-base max-w-md">
               Faça login ou registre-se para começar a construir seus projetos
               ainda hoje.
             </p>
           </div>
-
           {/* FORM */}
           <div className="flex flex-col gap-6">
             {/* NAME */}
@@ -89,13 +106,28 @@ export default function Register() {
               <label className="text-slate-100 text-sm font-semibold">
                 Senha
               </label>
-              <input
-                type="password"
-                placeholder="Crie uma senha"
-                className="w-full max-w-md px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
+
+              <div className="relative w-full max-w-md">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Crie uma senha"
+                  className="w-full px-3 py-4 border-b border-slate-600 bg-transparent outline-none text-slate-300 pr-10"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition"
+                >
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible size={20} />
+                  ) : (
+                    <AiOutlineEye size={20} />
+                  )}
+                </button>
+              </div>
             </div>
 
             {/* BUTTON */}
@@ -105,6 +137,12 @@ export default function Register() {
             >
               Criar conta
             </button>
+
+            {errorMessage && (
+              <div className="w-full lg:w-96 px-3 py-2 rounded bg-red-500/10 border border-red-500 text-red-400 text-sm">
+                {errorMessage}
+              </div>
+            )}
 
             {/* LOGIN LINK */}
             <div>

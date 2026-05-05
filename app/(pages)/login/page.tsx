@@ -3,11 +3,15 @@
 import { loginUser } from "@/app/actions/login";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { BiCube } from "react-icons/bi";
+import { BsArrowBarRight } from "react-icons/bs";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const router = useRouter();
 
@@ -17,13 +21,20 @@ export default function Login() {
       router.push("/profile");
     } catch (error: any) {
       console.log("Erro login:", error.message);
+      setErrorMessage(error?.message || "Email ou senha inválidos");
     }
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col lg:block bg-black">
+    <div className="w-full min-h-screen flex flex-col lg:block">
       {/* HEADER LOGO */}
       <div className="w-full flex justify-center lg:justify-start px-6 lg:px-0 lg:absolute lg:left-28 lg:top-10 mt-6 lg:mt-0">
+        <button
+          onClick={() => router.back()}
+          className="w-10 h-10 cursor-pointer flex items-center justify-center text-white hover:text-lime-400 transition"
+        >
+          <BsArrowBarRight size={22} />
+        </button>
         <div className="flex gap-1 items-center">
           <BiCube size={35} className="text-lime-300" />
           <span className="text-2xl font-bold text-white font-mono">Your</span>
@@ -72,19 +83,35 @@ export default function Login() {
                 <label className="text-slate-100 text-sm font-semibold">
                   Senha
                 </label>
-
-                <span className="text-lime-400 text-sm font-semibold cursor-pointer">
-                  Esqueceu a senha?
-                </span>
               </div>
 
-              <input
-                type="password"
-                placeholder="Digite sua senha"
-                className="w-full lg:w-96 px-3 py-4 rounded border border-slate-200 bg-transparent text-white outline-none"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
+              <div className="relative w-full lg:w-96">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Digite sua senha"
+                  className="w-full px-3 py-4 rounded border border-slate-200 bg-transparent text-white outline-none pr-12"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white"
+                >
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible size={20} />
+                  ) : (
+                    <AiOutlineEye size={20} />
+                  )}
+                </button>
+              </div>
+
+              {errorMessage && (
+                <div className="w-full lg:w-96 px-3 py-2 rounded bg-red-500/10 border border-red-500 text-red-400 text-sm">
+                  {errorMessage}
+                </div>
+              )}
             </div>
 
             {/* BUTTON */}

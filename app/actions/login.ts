@@ -13,7 +13,7 @@ export async function loginUser({
   password: string;
 }) {
   if (!email || !password) {
-    throw new Error("Missing fields");
+    throw new Error("Dados não preenchidos");
   }
 
   const user = await prisma.user.findUnique({
@@ -21,13 +21,13 @@ export async function loginUser({
   });
 
   if (!user || !user.password_hash) {
-    throw new Error("Invalid credentials");
+    throw new Error("Credenciais invalidas");
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password_hash);
 
   if (!passwordMatch) {
-    throw new Error("Invalid credentials");
+    throw new Error("Credenciais invalidas");
   }
 
   // 🔐 cria token

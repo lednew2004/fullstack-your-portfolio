@@ -15,7 +15,7 @@ export async function registerUser({
   password: string;
 }) {
   if (!name || !username || !email || !password) {
-    throw new Error("Missing fields");
+    throw new Error("Dados não preenchidos");
   }
 
   // verifica email
@@ -24,7 +24,7 @@ export async function registerUser({
   });
 
   if (emailExists) {
-    throw new Error("Email already in use");
+    throw new Error("Esse E-mail está em uso");
   }
 
   // verifica username
@@ -33,7 +33,7 @@ export async function registerUser({
   });
 
   if (usernameExists) {
-    throw new Error("Username already in use");
+    throw new Error("Esse username está em uso");
   }
 
   const password_hash = await bcrypt.hash(password, 10);
