@@ -3,6 +3,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { prisma } from "../lib/prisma";
 
 export async function loginUser({
@@ -45,5 +46,5 @@ export async function loginUser({
     secure: process.env.NODE_ENV === "production",
   });
 
-  return { success: true };
+  redirect("/profile");
 }
