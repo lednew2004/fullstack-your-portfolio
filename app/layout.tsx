@@ -1,6 +1,6 @@
-import "./globals.css";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Red_Hat_Display } from "next/font/google";
+import "./globals.css";
 
 const redHatDisplay = Red_Hat_Display({
   subsets: ["latin"],
@@ -28,6 +28,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleAnalytics gaId="G-FH2XX8NDBH" />
     </html>
   );
 }
