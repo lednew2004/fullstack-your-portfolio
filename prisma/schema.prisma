@@ -67,7 +67,7 @@ model Techs {
   name String @unique
 
   project Projects[]
-  users User[]
+  usersj User[]
 }
 
 model Links {
